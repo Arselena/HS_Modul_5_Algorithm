@@ -92,6 +92,10 @@ class LinkedList:
     def insert(self, afterNode, newNode): # 1.6. Добавьте в класс LinkedList метод вставки узла newNode после заданного узла afterNode (из списка)
         node = self.head
 
+        if self.head == self.tail == None:
+            self.add_in_tail(newNode)
+            return
+
         while node:
             if node == afterNode:
                 newNode.next = node.next
