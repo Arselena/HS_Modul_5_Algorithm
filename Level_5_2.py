@@ -55,8 +55,8 @@ class LinkedList2:
                     return
                 if node == self.head:  # если удаляется "голова", то переопределяем голову и пред.узел
                     self.head = node.next
-                    self.pred = None
                     node = self.head
+                    node.prev = None
                 elif node == self.tail:  # если удаляется "хвост", то переопределяем хвост
                     self.tail = node.prev
                     node.prev.next = None
@@ -115,12 +115,12 @@ class LinkedList2:
             self.head = newNode
         pass # здесь будет ваш код   
 
-n1 = Node(12)
-# n2 = Node(12)
+# n1 = Node(12)
+# n2 = Node(13)
 # n1.next = n2 # 12 -> 55
 # n2.prev = n1
-s_list = LinkedList2()
-s_list.add_in_tail(n1)
+# s_list = LinkedList2()
+# s_list.add_in_tail(n1)
 # s_list.add_in_tail(n2)
 # s_list.add_in_tail(Node(55))
 # s_list.add_in_tail(Node(12))
@@ -128,8 +128,8 @@ s_list.add_in_tail(n1)
 # s_list.add_in_tail(Node(33))
 # s_list.add_in_tail(Node(129))
 # s_list.add_in_tail(Node(12))
-print('Начальные список')
-s_list.print_all_nodes()
+# print('Начальные список')
+# s_list.print_all_nodes()
 
 # 2.1. метод поиска первого узла по его значению
 # print("Поиск узла по значению", s_list.find(129).value)
@@ -139,10 +139,11 @@ s_list.print_all_nodes()
 
 # 2.3. метод удаления одного узла по его значению
 # 2.4. Дополните этот метод удалением всех узлов по конкретному значению (флажок all=True)
-s_list.delete(12, False)
-print('Удалить 12')
-# print('последний элемент', s_list.head.value)
-s_list.print_all_nodes()
+# s_list.delete(12, False)
+# print('Удалить 12')
+# # print('последний элемент', s_list.head.value)
+# s_list.print_all_nodes()
+# print(s_list.head.prev, s_list.tail.next)
 
 # 2.5. метод вставки узла после заданного узла.
 # s_list.insert(n1, Node(3))
