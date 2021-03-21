@@ -109,6 +109,7 @@ class LinkedList2:
             self.tail.prev = newNode
         else:
             newNode.next = self.head 
+            self.head.prev = newNode  # если больше 2х узлоа, то переопределить (пред.ИЛИ след.) узел у (головы ИЛИ хвоста) соответственно
         newNode.prev = None
         self.head = newNode
         pass # здесь будет ваш код   
