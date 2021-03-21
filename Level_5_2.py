@@ -103,16 +103,14 @@ class LinkedList2:
         pass # здесь будет ваш код
 
     def add_in_head(self, newNode):  # 2.6. метод вставки узла самым первым элементом.
-        if self.head is None:
-            self.head = newNode
+        if self.head is None:  # если список пустой, то переопределить противоположный узел (хвост)
             self.tail = newNode
-            newNode.prev = None
-            newNode.next = None
+        elif self.head == self.tail:  # если один узел, то переопределить (пред.ИЛИ след.) узел у (хвоста ИЛИ головы) соответственно
+            self.tail.prev = newNode
         else:
-            # self.head = newNode
-            newNode.prev = None
-            newNode.next = self.head
-            self.head = newNode
+            newNode.next = self.head 
+        newNode.prev = None
+        self.head = newNode
         pass # здесь будет ваш код   
 
 # n1 = Node(12)
@@ -154,6 +152,7 @@ class LinkedList2:
 # s_list.add_in_head(Node(66))
 # print('ADD in head')
 # s_list.print_all_nodes()
+# print(s_list.head.next.value, s_list.tail.value)
 
 # 2.7. метод очистки всего содержимого (создание пустого списка) -- clean()
 # s_list.clean()
