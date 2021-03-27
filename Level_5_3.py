@@ -51,7 +51,11 @@ class DynArray:
         self.count += 1
 
     def insert(self, i, itm): # 5.1. добавляем объект itm в позицию i, начиная с 0
-        self[i-1]   # если индекс i лежит вне допустимых границ, генерируем исключение __getitem__. 
+        if self.count == 0 and i == 0:
+            self.append(itm)
+            return
+        elif i != 0:
+            self[i-1]   # если индекс i лежит вне допустимых границ, генерируем исключение __getitem__. 
                     # Для вставки в конец: (i-1) не больше текущей длины массива
         if self.count == self.capacity:
             self.resize(2*self.capacity)
@@ -92,11 +96,11 @@ class DynArray:
         print('массив / память', self.count, self.capacity)
 
 # da = DynArray()
-# for i in range(2):
+# for i in range(1):
 #     da.append(i)
 #     print (da[i])
 # print(da.count, da.capacity)
-# da.insert(2, 22)
+# da.insert(0, 22)
 # da.print_all()
 # da.delete(0)
 # da.print_all()
