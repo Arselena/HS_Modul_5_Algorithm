@@ -16,12 +16,12 @@ class Queue:
     def size(self):
         return len(self.queue)
 
-    def enqueue(self, value):  # вставка в конец очереди (хвост)
+    def enqueue(self, item):  # вставка в конец очереди (хвост)
         new_queue = ((self.size() + 1) * ctypes.py_object)()  # расширяем массив памяти на 1 ячейку
         size = self.size()
         for i in range(size):
             new_queue[i] = self.queue[i]
-        new_queue[size] = value
+        new_queue[size] = item
         self.queue = new_queue
 
     def dequeue(self):
