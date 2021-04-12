@@ -17,18 +17,18 @@ class Queue:
         return len(self.queue)
 
     def enqueue(self, item):  # вставка в конец очереди (хвост)
-        new_queue = ((self.size() + 1) * ctypes.py_object)()  # расширяем массив памяти на 1 ячейку
+        new_queue = self.make_queue(self.size() + 1)  # Есть же метод make_queue вместо ((self.size() + 1) * ctypes.py_object)()  # расширяем массив памяти на 1 ячейку
         size = self.size()
         for i in range(size):
             new_queue[i] = self.queue[i]
         new_queue[size] = item
         self.queue = new_queue
 
-    def dequeue(self):
+    def dequeue(self):  # возвращает элемент из головы очереди, удаляя его
         size = self.size()
         if size == 0:
             return None # если очередь пустая
-        new_queue = ((self.size() - 1) * ctypes.py_object)()
+        new_queue = self.make_queue(self.size() - 1)  # Есть же метод make_queue вместо ((self.size() - 1) * ctypes.py_object)()
         for i in range(size - 1):
             new_queue[i] = self.queue[i+1]
         head_element = self.queue[0]
@@ -40,7 +40,7 @@ class Queue:
 #  dequeue() - O(n), т.к. зависит от кол-ва элементов в очереди
 
 #  6.3 Функция, которая "вращает" очередь по кругу на N элементов
-def round(qu:Queue(), n:int):
+def round(qu, n:int):  # убрала тип переменной qu:Queue()
     while n != 0:
         qu.enqueue(qu.dequeue())
         n -= 1
@@ -60,7 +60,7 @@ class Stack:
         size = self.size()
         if size == 0:
             return None # если стек пустой
-        new_stack = ((self.size() - 1) * ctypes.py_object)()
+        new_stack = self.make_stack(self.size() - 1)  # Есть же метод make_stack вместо ((self.size() - 1) * ctypes.py_object)()
         for i in range(size - 1):
             new_stack[i] = self.stack[i]
         end_element = self.stack[size - 1]
@@ -68,7 +68,7 @@ class Stack:
         return end_element
 
     def push(self, value):
-        new_stack = ((self.size() + 1) * ctypes.py_object)()  # расширяем массив памяти на 1 ячейку
+        new_stack = self.make_stack(self.size() + 1)  # Есть же метод make_stack вместо ((self.size() + 1) * ctypes.py_object)()  # расширяем массив памяти на 1 ячейку
         size = self.size()
         for i in range(size):
             new_stack[i] = self.stack[i]
