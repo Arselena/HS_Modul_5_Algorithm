@@ -1,6 +1,4 @@
 # Модуль 5. 6. Двусторонняя очередь (deque)
-# 7.1. Почему и как будет различаться мера сложности для addHead/removeHead и addTail/removeTail?
-
 
 class Deque:
     def __init__(self):  # инициализация внутреннего хранилища
@@ -35,15 +33,13 @@ class Deque:
 
 # 7.2. Напишите функцию, которая с помощью deque проверяет, является ли некоторая строка палиндромом
 def polinom(s):
-    qu1 = Deque()
-    qu2 = Deque()
+    deq_s = Deque()
     for i in range(len(s)):
-        qu1.addTail(s[i])
-        qu2.addFront(s[i])
-    if qu1.deque == qu2.deque:
-        return True
-    return False
-
+        deq_s.addTail(s[i])
+    while deq_s.size() > 1:
+        if deq_s.removeTail() != deq_s.removeFront():
+            return False
+    return True
 
 # deq = Deque()
 # deq.addFront("f1")
@@ -53,5 +49,4 @@ def polinom(s):
 # while deq.size() > 0:
 #     print(deq.removeFront())
 #     print(deq.removeTail())
-
-# print(polinom('11211'))
+# print(polinom('1'))
