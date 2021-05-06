@@ -25,37 +25,34 @@ class PowerSet:
         return False
 
     def intersection(self, set2): # пересечение текущего множества и set2
-        set2 = list(set2)
-        set_rez = []
-        for i in range(len(set2)):
-            if self.get(set2[i]) is True:
-                set_rez.append(set2[i])
-        if set_rez != []:
-            return set(set_rez)
-        return None
+        set_rez = PowerSet()
+        for i in set2:
+            if self.get(i) is True:
+                set_rez.put(i)
+        if set_rez.values_list != []:
+            return set_rez.get_set()
+        return {}
 
     def union(self, set2): # объединение текущего множества и set2
-        values = self.values_list
-        set2 = list(set2)
-        for i in range(len(set2)):
-            if self.get(set2[i]) is False:
-                values.append(set2[i])
-        return set(values)
+        set_rez = PowerSet()
+        set_rez.values_list = self.values_list
+        for i in set2:
+            if self.get(i) is False:
+                set_rez.put(i)
+        return set_rez.get_set()
 
     def difference(self, set2): # разница текущего множества и set2
-        set_rez = []
-        set2 = list(set2)
-        for i in range(len(set2)):
-            if self.get(set2[i]) is False:
-                set_rez.append(set2[i])
-        if set_rez != []:
-            return set(set_rez)
-        return None
+        set_rez = PowerSet()
+        for i in set2:
+            if self.get(i) is False:
+                set_rez.put(i)
+        if set_rez.values_list != []:
+            return set_rez.get_set()
+        return {}
 
     def issubset(self, set2): # возвращает True, если set2 есть подмножество текущего множества, иначе False
-        set2 = list(set2)
-        for i in range(len(set2)):
-            if self.get(set2[i]) is False:
+        for i in set2:
+            if self.get(i) is False:
                 return False
         return True
 
@@ -66,3 +63,4 @@ class PowerSet:
 # for i in range(20):
 #     ps.put('test' + str(i))
 # print(ps.get_set())
+# print(ps.intersection({'test1', 'test11', 'test111'}))
