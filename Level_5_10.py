@@ -29,7 +29,7 @@ class PowerSet:
         for i in set2.values_list:
             if self.get(i) is True:
                 set_rez.put(i)
-        return set_rez.get_set()
+        return set_rez
 
     def union(self, set2): # объединение текущего множества и set2
         set_rez = PowerSet()
@@ -37,14 +37,14 @@ class PowerSet:
         for i in set2.values_list:
             if self.get(i) is False:
                 set_rez.put(i)
-        return set_rez.get_set()
+        return set_rez
 
     def difference(self, set2): # разница текущего множества и set2
         set_rez = PowerSet()
         for i in set2.values_list:
             if self.get(i) is False:
                 set_rez.put(i)
-        return set_rez.get_set()
+        return set_rez
 
     def issubset(self, set2): # возвращает True, если set2 есть подмножество текущего множества, иначе False
         for i in set2.values_list:
