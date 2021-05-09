@@ -26,41 +26,33 @@ class PowerSet:
 
     def intersection(self, set2): # пересечение текущего множества и set2
         set_rez = PowerSet()
-        for i in set2:
+        for i in set2.values_list:
             if self.get(i) is True:
                 set_rez.put(i)
-        if set_rez.values_list != []:
-            return set_rez.get_set()
-        return {}
+        return set_rez.get_set()
 
     def union(self, set2): # объединение текущего множества и set2
         set_rez = PowerSet()
         set_rez.values_list = self.values_list
-        for i in set2:
+        for i in set2.values_list:
             if self.get(i) is False:
                 set_rez.put(i)
         return set_rez.get_set()
 
     def difference(self, set2): # разница текущего множества и set2
         set_rez = PowerSet()
-        for i in set2:
+        for i in set2.values_list:
             if self.get(i) is False:
                 set_rez.put(i)
-        if set_rez.values_list != []:
-            return set_rez.get_set()
-        return {}
+        return set_rez.get_set()
 
     def issubset(self, set2): # возвращает True, если set2 есть подмножество текущего множества, иначе False
-        for i in set2:
+        for i in set2.values_list:
             if self.get(i) is False:
                 return False
         return True
 
     def get_set(self): # преобразыет список в множество
-        return set(self.values_list)
-
-# ps = PowerSet()
-# for i in range(20):
-#     ps.put('test' + str(i))
-# print(ps.get_set())
-# print(ps.intersection({'test1', 'test11', 'test111'}))
+        if self.size() != 0:
+            return set(self.values_list)
+        return {}
