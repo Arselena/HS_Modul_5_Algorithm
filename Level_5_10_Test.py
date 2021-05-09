@@ -41,32 +41,32 @@ class DefTest(unittest.TestCase):
         self.assertEqual(res1, True)
 
     def test3(self):  # пересечение множеств intersection(), чтобы в результате получались как пустое, так и непустое множества;
-        res = self.ps.intersection(self.set1) # множества полностью совпадают
+        res = self.ps.intersection(self.set1).get_set() # множества полностью совпадают
         self.assertCountEqual(res, self.ps.get_set())
 
-        res1 = self.ps.intersection(self.set2) # множества частично пересекаются
+        res1 = self.ps.intersection(self.set2).get_set() # множества частично пересекаются
         self.assertCountEqual(res1, {'test0', 'test2', 'test4', 'test6', 'test8', 'test10', 'test12', 'test14', 'test16', 'test18'}) 
         # assertCountEqual(a, b) — a и b содержат те же элементы в одинаковых количествах, но порядок не важен
 
-        res2 = self.ps.intersection(self.set3) # множества не пересекаются
+        res2 = self.ps.intersection(self.set3).get_set() # множества не пересекаются
         self.assertEqual(res2, {})
 
     def test4(self): # объединение union(), когда оба параметра непустые, и когда один из параметров -- пустое множество;
-        res = self.ps.union(self.set0) # не пустое с пустым
+        res = self.ps.union(self.set0).get_set() # не пустое с пустым
         self.assertEqual(res, self.ps.get_set())
 
-        res1 = self.ps.union(self.set2) # не пустое с не пустым 
+        res1 = self.ps.union(self.set2).get_set() # не пустое с не пустым 
         self.assertCountEqual(res1, {'test0', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11', 'test12', 'test13', 'test14', 'test15', 'test16', 'test17', 'test18', 'test19', 'test20', \
             'test22', 'test24', 'test26', 'test28', 'test30', 'test32', 'test34', 'test36', 'test38'})
 
-        res3 = self.set0.union(self.set2) # пустое множество с непустым
+        res3 = self.set0.union(self.set2).get_set() # пустое множество с непустым
         self.assertCountEqual(res3, self.set2.get_set())
 
     def test5(self): # разница difference(), чтобы в результате получались как пустое, так и непустое множества;
-        res = self.ps.difference(self.set1) # 
+        res = self.ps.difference(self.set1).get_set() # 
         self.assertEqual(res, {})
 
-        res1 = self.ps.difference(self.set2)
+        res1 = self.ps.difference(self.set2).get_set()
         self.assertCountEqual(res1, {'test20', 'test22', 'test24', 'test26', 'test28', 'test30', 'test32', 'test34', 'test36', 'test38'})
 
     def test6(self): # вхождение множества 
