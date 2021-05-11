@@ -43,8 +43,8 @@ class PowerSet:
 
     def difference(self, set2): # разница текущего множества и set2
         set_rez = PowerSet()
-        for i in set2.slots:
-            if self.get(i) is False:
+        for i in self.slots:
+            if set2.get(i) is False:
                 set_rez.put(i)
         return set_rez
 
