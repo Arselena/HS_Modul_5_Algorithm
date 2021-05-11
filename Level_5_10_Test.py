@@ -56,7 +56,8 @@ class DefTest(unittest.TestCase):
         self.assertEqual(res, self.ps.get_set())
 
         res1 = self.ps.union(self.set2).get_set() # не пустое с не пустым 
-        self.assertCountEqual(res1, {'test0', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11', 'test12', 'test13', 'test14', 'test15', 'test16', 'test17', 'test18', 'test19', 'test20', \
+        self.assertCountEqual(res1, {'test0', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', \
+            'test11', 'test12', 'test13', 'test14', 'test15', 'test16', 'test17', 'test18', 'test19', 'test20', \
             'test22', 'test24', 'test26', 'test28', 'test30', 'test32', 'test34', 'test36', 'test38'})
 
         res3 = self.set0.union(self.set2).get_set() # пустое множество с непустым
@@ -67,7 +68,7 @@ class DefTest(unittest.TestCase):
         self.assertEqual(res, {})
 
         res1 = self.ps.difference(self.set2).get_set()
-        self.assertCountEqual(res1, {'test20', 'test22', 'test24', 'test26', 'test28', 'test30', 'test32', 'test34', 'test36', 'test38'})
+        self.assertCountEqual(res1, {'test1', 'test3', 'test5', 'test7', 'test9', 'test11', 'test13', 'test15', 'test17', 'test19'})
 
     def test6(self): # вхождение множества 
         res1 = self.ps.issubset(self.set1)  # все элементы параметра входят в текущее множество
