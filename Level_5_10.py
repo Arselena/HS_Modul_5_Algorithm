@@ -33,7 +33,9 @@ class PowerSet:
 
     def union(self, set2): # объединение текущего множества и set2
         set_rez = PowerSet()
-        set_rez.slots = self.slots
+        # set_rez.slots = self.slots
+        for i in self.slots:
+            set_rez.put(i)
         for i in set2.slots:
             if self.get(i) is False:
                 set_rez.put(i)
@@ -62,5 +64,5 @@ class PowerSet:
 # # print(type(ps))
 # for i in range(20):
 #     ps.put(str(i))
-# print(ps.union(set2))
+# print(ps.union(set2).get_set())
 # print(ps.size())
